@@ -11,6 +11,9 @@
 		D3F9FE3B29638F07001EC724 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContentView.swift */; };
 		D3F9FE3D29638F08001EC724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3C29638F08001EC724 /* Assets.xcassets */; };
 		D3F9FE4029638F08001EC724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3F29638F08001EC724 /* Preview Assets.xcassets */; };
+		D3F9FE4829638F61001EC724 /* ContactsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */; };
+		D3F9FE4C2963918C001EC724 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE4B2963918C001EC724 /* Contact.swift */; };
+		D3F9FE5629639343001EC724 /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE5529639343001EC724 /* ContactsProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		D3F9FE3A29638F07001EC724 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3F9FE3C29638F08001EC724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F9FE3F29638F08001EC724 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3F9FE4729638F61001EC724 /* ContactsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		D3F9FE4B2963918C001EC724 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		D3F9FE5529639343001EC724 /* ContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,7 @@
 			children = (
 				D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */,
 				D3F9FE3A29638F07001EC724 /* ContentView.swift */,
+				D3F9FE4A29639170001EC724 /* CoreData Stack */,
 				D3F9FE3C29638F08001EC724 /* Assets.xcassets */,
 				D3F9FE3E29638F08001EC724 /* Preview Content */,
 			);
@@ -65,6 +72,16 @@
 				D3F9FE3F29638F08001EC724 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D3F9FE4A29639170001EC724 /* CoreData Stack */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */,
+				D3F9FE4B2963918C001EC724 /* Contact.swift */,
+				D3F9FE5529639343001EC724 /* ContactsProvider.swift */,
+			);
+			path = "CoreData Stack";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F9FE4C2963918C001EC724 /* Contact.swift in Sources */,
+				D3F9FE5629639343001EC724 /* ContactsProvider.swift in Sources */,
+				D3F9FE4829638F61001EC724 /* ContactsDataModel.xcdatamodeld in Sources */,
 				D3F9FE3B29638F07001EC724 /* ContentView.swift in Sources */,
 				D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */,
 			);
@@ -339,6 +359,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3F9FE4729638F61001EC724 /* ContactsDataModel.xcdatamodel */,
+			);
+			currentVersion = D3F9FE4729638F61001EC724 /* ContactsDataModel.xcdatamodel */;
+			path = ContactsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D3F9FE2D29638F06001EC724 /* Project object */;
 }
