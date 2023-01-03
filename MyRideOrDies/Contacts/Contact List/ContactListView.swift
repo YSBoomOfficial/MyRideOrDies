@@ -14,6 +14,7 @@ struct ContactListView: View {
 	@State private var contactToEdit: Contact? = nil
 
 	@State private var searchConfig = SearchConfig()
+	@State private var sort = Sort.ascending
 
 	@State private var error: Error? = nil
 	private var hasError: Binding<Bool> {
@@ -57,7 +58,7 @@ struct ContactListView: View {
 			}
 			.navigationTitle("Contacts")
 			.toolbar {
-				ToolbarItem(placement: .navigationBarLeading) {
+				ToolbarItem(placement: .navigationBarTrailing) {
 					Button {
 						contactToEdit = .empty(context: provider.newContext)
 					} label: {
@@ -66,23 +67,35 @@ struct ContactListView: View {
 					}
 				}
 
-				ToolbarItem(placement: .navigationBarTrailing) {
-					Menu {
-						Text("Filter Favorites")
-						Section("Filter") {
-							Picker(selection: $searchConfig.filter) {
-								Text("All").tag(SearchConfig.Filter.all)
-								Text("Favorites").tag(SearchConfig.Filter.favs)
-							} label: {
-								Text("Filter Favorites")
+				if !contacts.isEmpty {
+					ToolbarItem(placement: .navigationBarLeading) {
+						Menu {
+							Section("Filter") {
+								Picker(selection: $searchConfig.filter) {
+									Text("All").tag(SearchConfig.Filter.all)
+									Label("Favorites", systemImage: "star.fill")
+										.tag(SearchConfig.Filter.favs)
+								} label: {
+									Text("Filter Favorites")
+								}
 							}
+							Section("Sort") {
+								Picker(selection: $sort) {
+									Label("Ascending", systemImage: "arrow.up")
+										.tag(Sort.ascending)
+									Label("Descending", systemImage: "arrow.down")
+										.tag(Sort.descending)
+								} label: {
+									Text("Sort Order")
+								}
+							}
+						} label: {
+							Image(systemName: "ellipsis")
+								.symbolVariant(.circle)
+								.font(.title2)
 						}
-					} label: {
-						Image(systemName: "ellipsis")
-							.symbolVariant(.circle)
-							.font(.title2)
-					}
 
+					}
 				}
 			}
 			.sheet(item: $contactToEdit) {
@@ -101,6 +114,9 @@ struct ContactListView: View {
 			.searchable(text: $searchConfig.query)
 			.onChange(of: searchConfig) {
 				contacts.nsPredicate = Contact.filter(with: $0)
+			}
+			.onChange(of: sort) {
+				contacts.nsSortDescriptors = Contact.sort(order: $0)
 			}
 		}
 	}

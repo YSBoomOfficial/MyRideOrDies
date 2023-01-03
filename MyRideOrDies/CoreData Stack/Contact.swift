@@ -35,7 +35,7 @@ final class Contact: NSManagedObject, Identifiable {
 	}
 }
 
-// MARK: Fetch Requests
+// MARK: Fetch Requests, Search and Sort
 extension Contact {
 	private static var contactsFetchRequest: NSFetchRequest<Contact> {
 		.init(entityName: "Contact")
@@ -56,6 +56,9 @@ extension Contact {
 		}
 	}
 
+	static func sort(order: Sort) -> [NSSortDescriptor] {
+		[.init(keyPath: \Contact.name, ascending: order == .ascending)]
+	}
 }
 
 // MARK: CRUD Operations

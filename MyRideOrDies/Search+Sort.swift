@@ -14,3 +14,7 @@ struct SearchConfig: Equatable {
 	var filter: Filter = .all
 	var query = ""
 }
+
+enum Sort {
+	case ascending, descending
+}
