@@ -23,6 +23,10 @@ final class Contact: NSManagedObject, Identifiable {
 	var formattedName: String {
 		"\(isBirthday ? "🎈" : "") \(name)"
 	}
+
+	var isValid: Bool {
+		!name.isEmpty && !email.isEmpty && !phoneNumber.isEmpty
+	}
 	
 	override func awakeFromInsert() {
 		super.awakeFromInsert()

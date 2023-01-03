@@ -9,10 +9,14 @@ import SwiftUI
 import CoreData
 
 struct ContactListView: View {
+	private let provider = ContactsProvider.shared
 	@FetchRequest(fetchRequest: Contact.all()) private var contacts
-	@ObservedObject var editContactViewModel = EditContactViewModel(provider: .shared)
-	
-	@State private var isShowingNewContact = false
+	@State private var contactToEdit: Contact? = nil
+
+	@State private var error: Error? = nil
+	private var hasError: Binding<Bool> {
+		.init(get: { error != nil }, set: { _ in error = nil })
+	}
 
 	var body: some View {
 		NavigationStack {
@@ -28,7 +32,22 @@ struct ContactListView: View {
 									label: EmptyView.init
 								)
 								.opacity(0)
-								ContactRowView(contact: contact)
+								
+								ContactRowView(provider: .shared, contact: contact, error: $error)
+									.swipeActions(allowsFullSwipe: true) {
+										Button(role: .destructive) {
+											provider.delete(contact, in: provider.newContext)
+										} label: {
+											Label("Delete", systemImage: "trash")
+										}.tint(.red)
+
+										Button {
+											contactToEdit = contact
+										} label: {
+											Label("Edit", systemImage: "pencil")
+										}
+										.tint(.orange)
+									}
 							}
 						}
 					}
@@ -38,17 +57,25 @@ struct ContactListView: View {
 			.toolbar {
 				ToolbarItem(placement: .primaryAction) {
 					Button {
-						isShowingNewContact.toggle()
+						contactToEdit = .empty(context: provider.newContext)
 					} label: {
 						Image(systemName: "plus")
 							.font(.title2)
 					}
 				}
 			}
-			.sheet(isPresented: $isShowingNewContact) {
+			.sheet(item: $contactToEdit) {
+				contactToEdit = nil
+			} content: { contact in
 				NavigationStack {
-					CreateContactView(vm: editContactViewModel)
+					CreateContactView(vm: .init(provider: provider, contact: contactToEdit), error: $error)
 				}
+				.interactiveDismissDisabled()
+			}
+			.alert( "Oops! Something went wrong.", isPresented: hasError) {
+				Button("Ok") {}
+			} message: {
+				Text(error?.localizedDescription ?? "Lets try that again!")
 			}
 		}
 	}

@@ -10,12 +10,7 @@ import SwiftUI
 struct CreateContactView: View {
 	@Environment(\.dismiss) var dismiss
 	@ObservedObject var vm: EditContactViewModel
-
-	@State private var error: Error? = nil
-
-	private var hasError: Binding<Bool> {
-		.init(get: { error != nil }, set: { _ in error = nil })
-	}
+	@Binding var error: Error?
 
 	var body: some View {
 		List {
@@ -41,12 +36,7 @@ struct CreateContactView: View {
 				TextField("", text: $vm.contact.notes, axis: .vertical )
 			}
 		}
-		.navigationTitle("Name Here")
-		.alert( "Oops! Something went wrong.", isPresented: hasError) {
-			Button("Ok") {}
-		} message: {
-			Text(error?.localizedDescription ?? "Lets try that again!")
-		}
+		.navigationTitle(vm.isNew ? "New Contact" : "Update Contact")
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
 				Button("Done") {
@@ -57,7 +47,7 @@ struct CreateContactView: View {
 						self.error = error
 					}
 				}
-				.disabled(vm.contact.name.isEmpty)
+				.disabled(!vm.contact.isValid)
 			}
 
 			ToolbarItem(placement: .navigationBarLeading) {
@@ -70,7 +60,7 @@ struct CreateContactView: View {
 struct CreateContactView_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationStack {
-			CreateContactView(vm: .init(provider: ContactsProvider.shared))
+			CreateContactView(vm: .init(provider: ContactsProvider.shared), error: .constant(nil))
 				.environment(\.managedObjectContext, ContactsProvider.shared.viewContext)
 		}
 	}

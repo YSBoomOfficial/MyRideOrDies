@@ -9,12 +9,9 @@ import SwiftUI
 
 struct ContactRowView: View {
 	@Environment(\.managedObjectContext) var moc
+	let provider: ContactsProvider
 	@ObservedObject var contact: Contact
-
-	@State private var error: Error? = nil
-	private var hasError: Binding<Bool> {
-		.init(get: { error != nil }, set: { _ in error = nil })
-	}
+	@Binding var error: Error?
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -29,19 +26,12 @@ struct ContactRowView: View {
 		}
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.overlay(alignment: .topTrailing) {
-			Button {
-				toggleFavorite()
-			} label: {
+			Button(action: toggleFavorite) {
 				Image(systemName: "star")
 					.font(.title3)
 					.symbolVariant(.fill)
 					.foregroundColor(contact.isFavorite ? .yellow : .gray.opacity(0.3))
 			}.buttonStyle(.plain)
-		}
-		.alert( "Oops! Something went wrong.", isPresented: hasError) {
-			Button("Ok") {}
-		} message: {
-			Text(error?.localizedDescription ?? "Lets try that again!")
 		}
 	}
 }
@@ -51,7 +41,7 @@ fileprivate extension ContactRowView {
 	func toggleFavorite() {
 		contact.isFavorite.toggle()
 		do {
-			if moc.hasChanges { try moc.save() }
+			try provider.persist(in: moc)
 		} catch {
 			self.error = error
 		}
@@ -61,7 +51,7 @@ fileprivate extension ContactRowView {
 
 struct ContactRowView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContactRowView(contact: Contact.preview())
+		ContactRowView(provider: .shared, contact: .preview(), error: .constant(nil))
 			.padding()
 			.previewLayout(.sizeThatFits)
 	}
