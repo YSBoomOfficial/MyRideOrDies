@@ -35,6 +35,7 @@ final class Contact: NSManagedObject, Identifiable {
 	}
 }
 
+// MARK: Fetch Requests
 extension Contact {
 	private static var contactsFetchRequest: NSFetchRequest<Contact> {
 		.init(entityName: "Contact")
@@ -45,8 +46,19 @@ extension Contact {
 		request.sortDescriptors = [.init(keyPath: \Contact.name, ascending: true)]
 		return request
 	}
+
+	static func filter(with config: SearchConfig) -> NSPredicate {
+		switch config.filter {
+			case .all:
+				return config.query.isEmpty ? .init(value: true) : .init(format: "name CONTAINS[cd] %@", config.query)
+			case .favs:
+				return config.query.isEmpty ? .init(format: "isFavorite == %@", NSNumber(value: true)) : .init(format: "name CONTAINS[cd] %@ AND isFavorite == %@", config.query, NSNumber(value: true))
+		}
+	}
+
 }
 
+// MARK: CRUD Operations
 extension Contact {
 	@discardableResult
 	static func makePreview(count: Int, in context: NSManagedObjectContext) -> [Contact] {

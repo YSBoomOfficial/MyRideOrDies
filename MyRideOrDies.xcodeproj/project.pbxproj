@@ -10,6 +10,7 @@
 		D33176D72963BB9D00599987 /* EnvironmentValues+isPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176D62963BB9D00599987 /* EnvironmentValues+isPreview.swift */; };
 		D33176D92963BCC400599987 /* Thread+isRunningXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176D82963BCC400599987 /* Thread+isRunningXCTest.swift */; };
 		D33176DB2963C3D800599987 /* NoContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176DA2963C3D800599987 /* NoContactsView.swift */; };
+		D3DDD9172964C16700325399 /* SearchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9162964C16700325399 /* SearchConfig.swift */; };
 		D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */; };
 		D3F9FE3B29638F07001EC724 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContactListView.swift */; };
 		D3F9FE3D29638F08001EC724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3C29638F08001EC724 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		D33176D62963BB9D00599987 /* EnvironmentValues+isPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+isPreview.swift"; sourceTree = "<group>"; };
 		D33176D82963BCC400599987 /* Thread+isRunningXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+isRunningXCTest.swift"; sourceTree = "<group>"; };
 		D33176DA2963C3D800599987 /* NoContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsView.swift; sourceTree = "<group>"; };
+		D3DDD9162964C16700325399 /* SearchConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfig.swift; sourceTree = "<group>"; };
 		D3F9FE3529638F07001EC724 /* MyRideOrDies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRideOrDies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRideOrDiesApp.swift; sourceTree = "<group>"; };
 		D3F9FE3A29638F07001EC724 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */,
 				D33176D52963BB8000599987 /* Utils */,
 				D3F9FE4A29639170001EC724 /* CoreData Stack */,
+				D3DDD9162964C16700325399 /* SearchConfig.swift */,
 				D3F9FE622963A197001EC724 /* Contacts */,
 				D3F9FE3C29638F08001EC724 /* Assets.xcassets */,
 				D3F9FE3E29638F08001EC724 /* Preview Content */,
@@ -227,6 +230,7 @@
 				D3F9FE5D29639CCC001EC724 /* CreateContactView.swift in Sources */,
 				D3F9FE58296398A6001EC724 /* ContactRowView.swift in Sources */,
 				D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */,
+				D3DDD9172964C16700325399 /* SearchConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

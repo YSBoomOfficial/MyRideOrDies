@@ -13,6 +13,8 @@ struct ContactListView: View {
 	@FetchRequest(fetchRequest: Contact.all()) private var contacts
 	@State private var contactToEdit: Contact? = nil
 
+	@State private var searchConfig = SearchConfig()
+
 	@State private var error: Error? = nil
 	private var hasError: Binding<Bool> {
 		.init(get: { error != nil }, set: { _ in error = nil })
@@ -55,13 +57,32 @@ struct ContactListView: View {
 			}
 			.navigationTitle("Contacts")
 			.toolbar {
-				ToolbarItem(placement: .primaryAction) {
+				ToolbarItem(placement: .navigationBarLeading) {
 					Button {
 						contactToEdit = .empty(context: provider.newContext)
 					} label: {
 						Image(systemName: "plus")
 							.font(.title2)
 					}
+				}
+
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Menu {
+						Text("Filter Favorites")
+						Section("Filter") {
+							Picker(selection: $searchConfig.filter) {
+								Text("All").tag(SearchConfig.Filter.all)
+								Text("Favorites").tag(SearchConfig.Filter.favs)
+							} label: {
+								Text("Filter Favorites")
+							}
+						}
+					} label: {
+						Image(systemName: "ellipsis")
+							.symbolVariant(.circle)
+							.font(.title2)
+					}
+
 				}
 			}
 			.sheet(item: $contactToEdit) {
@@ -76,6 +97,10 @@ struct ContactListView: View {
 				Button("Ok") {}
 			} message: {
 				Text(error?.localizedDescription ?? "Lets try that again!")
+			}
+			.searchable(text: $searchConfig.query)
+			.onChange(of: searchConfig) {
+				contacts.nsPredicate = Contact.filter(with: $0)
 			}
 		}
 	}
