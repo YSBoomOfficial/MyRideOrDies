@@ -11,6 +11,7 @@
 		D33176D92963BCC400599987 /* Thread+isRunningXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176D82963BCC400599987 /* Thread+isRunningXCTest.swift */; };
 		D33176DB2963C3D800599987 /* NoContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176DA2963C3D800599987 /* NoContactsView.swift */; };
 		D3DDD9172964C16700325399 /* Search+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9162964C16700325399 /* Search+Sort.swift */; };
+		D3DDD9262964D15200325399 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9252964D15200325399 /* ModelTests.swift */; };
 		D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */; };
 		D3F9FE3B29638F07001EC724 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContactListView.swift */; };
 		D3F9FE3D29638F08001EC724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3C29638F08001EC724 /* Assets.xcassets */; };
@@ -24,11 +25,23 @@
 		D3F9FE642963A9E6001EC724 /* EditContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE632963A9E6001EC724 /* EditContactViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D3DDD9202964D0E300325399 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3F9FE2D29638F06001EC724 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3F9FE3429638F07001EC724;
+			remoteInfo = MyRideOrDies;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D33176D62963BB9D00599987 /* EnvironmentValues+isPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+isPreview.swift"; sourceTree = "<group>"; };
 		D33176D82963BCC400599987 /* Thread+isRunningXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+isRunningXCTest.swift"; sourceTree = "<group>"; };
 		D33176DA2963C3D800599987 /* NoContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsView.swift; sourceTree = "<group>"; };
 		D3DDD9162964C16700325399 /* Search+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Sort.swift"; sourceTree = "<group>"; };
+		D3DDD91C2964D0E200325399 /* MyRideOrDiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRideOrDiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3DDD9252964D15200325399 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		D3F9FE3529638F07001EC724 /* MyRideOrDies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRideOrDies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRideOrDiesApp.swift; sourceTree = "<group>"; };
 		D3F9FE3A29638F07001EC724 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
@@ -44,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D3DDD9192964D0E200325399 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3F9FE3229638F07001EC724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,10 +83,19 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D3DDD91D2964D0E300325399 /* MyRideOrDiesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDD9252964D15200325399 /* ModelTests.swift */,
+			);
+			path = MyRideOrDiesTests;
+			sourceTree = "<group>";
+		};
 		D3F9FE2C29638F06001EC724 = {
 			isa = PBXGroup;
 			children = (
 				D3F9FE3729638F07001EC724 /* MyRideOrDies */,
+				D3DDD91D2964D0E300325399 /* MyRideOrDiesTests */,
 				D3F9FE3629638F07001EC724 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				D3F9FE3529638F07001EC724 /* MyRideOrDies.app */,
+				D3DDD91C2964D0E200325399 /* MyRideOrDiesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +181,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D3DDD91B2964D0E200325399 /* MyRideOrDiesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3DDD9222964D0E300325399 /* Build configuration list for PBXNativeTarget "MyRideOrDiesTests" */;
+			buildPhases = (
+				D3DDD9182964D0E200325399 /* Sources */,
+				D3DDD9192964D0E200325399 /* Frameworks */,
+				D3DDD91A2964D0E200325399 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3DDD9212964D0E300325399 /* PBXTargetDependency */,
+			);
+			name = MyRideOrDiesTests;
+			productName = MyRideOrDiesTests;
+			productReference = D3DDD91C2964D0E200325399 /* MyRideOrDiesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3F9FE3429638F07001EC724 /* MyRideOrDies */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3F9FE4329638F08001EC724 /* Build configuration list for PBXNativeTarget "MyRideOrDies" */;
@@ -178,6 +226,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					D3DDD91B2964D0E200325399 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = D3F9FE3429638F07001EC724;
+					};
 					D3F9FE3429638F07001EC724 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -197,11 +249,19 @@
 			projectRoot = "";
 			targets = (
 				D3F9FE3429638F07001EC724 /* MyRideOrDies */,
+				D3DDD91B2964D0E200325399 /* MyRideOrDiesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D3DDD91A2964D0E200325399 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3F9FE3329638F07001EC724 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,6 +274,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D3DDD9182964D0E200325399 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3DDD9262964D15200325399 /* ModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3F9FE3129638F07001EC724 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,7 +304,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D3DDD9212964D0E300325399 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3F9FE3429638F07001EC724 /* MyRideOrDies */;
+			targetProxy = D3DDD9202964D0E300325399 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D3DDD9232964D0E300325399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HB73YMFXYF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YSBoomOfficial.MyRideOrDiesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyRideOrDies.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyRideOrDies";
+			};
+			name = Debug;
+		};
+		D3DDD9242964D0E300325399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HB73YMFXYF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YSBoomOfficial.MyRideOrDiesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyRideOrDies.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyRideOrDies";
+			};
+			name = Release;
+		};
 		D3F9FE4129638F08001EC724 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -412,6 +524,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D3DDD9222964D0E300325399 /* Build configuration list for PBXNativeTarget "MyRideOrDiesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3DDD9232964D0E300325399 /* Debug */,
+				D3DDD9242964D0E300325399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3F9FE3029638F06001EC724 /* Build configuration list for PBXProject "MyRideOrDies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

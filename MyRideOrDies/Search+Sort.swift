@@ -11,8 +11,8 @@ struct SearchConfig: Equatable {
 	enum Filter {
 		case all, favs
 	}
-	var filter: Filter = .all
 	var query = ""
+	var filter: Filter = .all
 }
 
 enum Sort {
