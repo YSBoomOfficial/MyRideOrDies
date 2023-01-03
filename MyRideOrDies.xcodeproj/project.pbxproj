@@ -94,6 +94,15 @@
 			path = MyRideOrDiesTests;
 			sourceTree = "<group>";
 		};
+		D3DDD9292964ED2200325399 /* Contact Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */,
+				D3F9FE4B2963918C001EC724 /* Contact.swift */,
+			);
+			path = "Contact Model";
+			sourceTree = "<group>";
+		};
 		D3F9FE2C29638F06001EC724 = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +127,6 @@
 				D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */,
 				D33176D52963BB8000599987 /* Utils */,
 				D3F9FE4A29639170001EC724 /* CoreData Stack */,
-				D3DDD9162964C16700325399 /* Search+Sort.swift */,
 				D3F9FE622963A197001EC724 /* Contacts */,
 				D3F9FE3C29638F08001EC724 /* Assets.xcassets */,
 				D3F9FE3E29638F08001EC724 /* Preview Content */,
@@ -137,9 +145,9 @@
 		D3F9FE4A29639170001EC724 /* CoreData Stack */ = {
 			isa = PBXGroup;
 			children = (
-				D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */,
-				D3F9FE4B2963918C001EC724 /* Contact.swift */,
+				D3DDD9292964ED2200325399 /* Contact Model */,
 				D3F9FE5529639343001EC724 /* ContactsProvider.swift */,
+				D3DDD9162964C16700325399 /* Search+Sort.swift */,
 			);
 			path = "CoreData Stack";
 			sourceTree = "<group>";
