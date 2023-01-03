@@ -6,21 +6,31 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContactListView: View {
+	@FetchRequest(fetchRequest: Contact.all()) private var contacts
+	@ObservedObject var editContactViewModel = EditContactViewModel(provider: .shared)
+	
 	@State private var isShowingNewContact = false
 
-    var body: some View {
+	var body: some View {
 		NavigationStack {
-			List {
-				ForEach(0...10, id: \.self) { _ in
-					ZStack(alignment: .leading) {
-						NavigationLink(
-							destination: ContactDetailView(),
-							label: EmptyView.init
-						)
-						.opacity(0)
-						ContactRowView()
+			ZStack {
+				if contacts.isEmpty {
+					NoContactsView()
+				} else {
+					List {
+						ForEach(contacts) { contact in
+							ZStack(alignment: .leading) {
+								NavigationLink(
+									destination: ContactDetailView(contact: contact),
+									label: EmptyView.init
+								)
+								.opacity(0)
+								ContactRowView(contact: contact)
+							}
+						}
 					}
 				}
 			}
@@ -37,16 +47,28 @@ struct ContactListView: View {
 			}
 			.sheet(isPresented: $isShowingNewContact) {
 				NavigationStack {
-					CreateContactView()
+					CreateContactView(vm: editContactViewModel)
 				}
 			}
 		}
-
-    }
+	}
 }
 
 struct ContactListView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		ContactListView()
-    }
+			.environment(\.managedObjectContext, ContactsProvider.shared.viewContext)
+			.previewDisplayName("Contacts with data")
+			.onAppear {
+				Contact.makePreview(count: 10, in: ContactsProvider.shared.viewContext)
+			}
+	}
+}
+
+struct ContactListView_EmptyPreviews: PreviewProvider {
+	static var previews: some View {
+		ContactListView()
+			.environment(\.managedObjectContext, ContactsProvider.shared.viewContext)
+			.previewDisplayName("Contacts with no data")
+	}
 }
