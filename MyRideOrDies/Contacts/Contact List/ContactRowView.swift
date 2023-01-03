@@ -15,36 +15,44 @@ struct ContactRowView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			Text(contact.formattedName)
-				.font(.system(size: 26, design: .rounded).bold())
-
-			Text(contact.email)
-				.font(.callout.bold())
-
-			Text(contact.phoneNumber)
-				.font(.callout.bold())
+			rowContent
 		}
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.overlay(alignment: .topTrailing) {
-			Button(action: toggleFavorite) {
-				Image(systemName: "star")
-					.font(.title3)
-					.symbolVariant(.fill)
-					.foregroundColor(contact.isFavorite ? .yellow : .gray.opacity(0.3))
-			}.buttonStyle(.plain)
+			toggleFavoriteButton
 		}
 	}
 }
 
 
 fileprivate extension ContactRowView {
-	func toggleFavorite() {
-		contact.isFavorite.toggle()
-		do {
-			try provider.persist(in: moc)
-		} catch {
-			self.error = error
+	@ViewBuilder
+	var rowContent: some View {
+		Text(contact.formattedName)
+			.font(.system(size: 26, design: .rounded).bold())
+
+		Text(contact.email)
+			.font(.callout.bold())
+
+		Text(contact.phoneNumber)
+			.font(.callout.bold())
+	}
+
+	var toggleFavoriteButton: some View {
+		Button {
+			contact.isFavorite.toggle()
+			do {
+				try provider.persist(in: moc)
+			} catch {
+				self.error = error
+			}
+		} label: {
+			Image(systemName: "star")
+				.font(.title3)
+				.symbolVariant(.fill)
+				.foregroundColor(contact.isFavorite ? .yellow : .gray.opacity(0.3))
 		}
+		.buttonStyle(.plain)
 	}
 }
 

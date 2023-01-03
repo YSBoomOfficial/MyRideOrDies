@@ -12,7 +12,7 @@ struct NoContactsView: View {
 		VStack {
 			Text("Looks like you don't have any saved contacts")
 			Text("press the \(Image(systemName: "plus")) icon to create some")
-		}.font(.headline).fontWeight(.semibold)
+		}.font(.subheadline)
 	}
 }
 

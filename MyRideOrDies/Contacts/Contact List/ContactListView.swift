@@ -17,6 +17,7 @@ struct ContactListView: View {
 	@State private var sort = Sort.ascending
 
 	@State private var error: Error? = nil
+
 	private var hasError: Binding<Bool> {
 		.init(get: { error != nil }, set: { _ in error = nil })
 	}
@@ -27,90 +28,22 @@ struct ContactListView: View {
 				if contacts.isEmpty {
 					NoContactsView()
 				} else {
-					List {
-						ForEach(contacts) { contact in
-							ZStack(alignment: .leading) {
-								NavigationLink(
-									destination: ContactDetailView(contact: contact),
-									label: EmptyView.init
-								)
-								.opacity(0)
-								
-								ContactRowView(provider: .shared, contact: contact, error: $error)
-									.swipeActions(allowsFullSwipe: true) {
-										Button(role: .destructive) {
-											provider.delete(contact, in: provider.newContext)
-										} label: {
-											Label("Delete", systemImage: "trash")
-										}.tint(.red)
-
-										Button {
-											contactToEdit = contact
-										} label: {
-											Label("Edit", systemImage: "pencil")
-										}
-										.tint(.orange)
-									}
-							}
-						}
-					}
+					contactList
 				}
 			}
 			.navigationTitle("Contacts")
 			.toolbar {
-				ToolbarItem(placement: .navigationBarTrailing) {
-					Button {
-						contactToEdit = .empty(context: provider.newContext)
-					} label: {
-						Image(systemName: "plus")
-							.font(.title2)
-					}
-				}
-
+				addContactButton
 				if !contacts.isEmpty {
-					ToolbarItem(placement: .navigationBarLeading) {
-						Menu {
-							Section("Filter") {
-								Picker(selection: $searchConfig.filter) {
-									Text("All").tag(SearchConfig.Filter.all)
-									Label("Favorites", systemImage: "star.fill")
-										.tag(SearchConfig.Filter.favs)
-								} label: {
-									Text("Filter Favorites")
-								}
-							}
-							Section("Sort") {
-								Picker(selection: $sort) {
-									Label("Ascending", systemImage: "arrow.up")
-										.tag(Sort.ascending)
-									Label("Descending", systemImage: "arrow.down")
-										.tag(Sort.descending)
-								} label: {
-									Text("Sort Order")
-								}
-							}
-						} label: {
-							Image(systemName: "ellipsis")
-								.symbolVariant(.circle)
-								.font(.title2)
-						}
-
-					}
+					filterMenu
 				}
 			}
-			.sheet(item: $contactToEdit) {
-				contactToEdit = nil
-			} content: { contact in
-				NavigationStack {
-					CreateContactView(vm: .init(provider: provider, contact: contactToEdit), error: $error)
-				}
-				.interactiveDismissDisabled()
-			}
-			.alert( "Oops! Something went wrong.", isPresented: hasError) {
-				Button("Ok") {}
-			} message: {
-				Text(error?.localizedDescription ?? "Lets try that again!")
-			}
+			.errorAlert(isPresented: hasError, for: error)
+			.sheet(
+				item: $contactToEdit,
+				onDismiss: { contactToEdit = nil },
+				content: sheetContent(for:)
+			)
 			.searchable(text: $searchConfig.query)
 			.onChange(of: searchConfig) {
 				contacts.nsPredicate = Contact.filter(with: $0)
@@ -119,6 +52,108 @@ struct ContactListView: View {
 				contacts.nsSortDescriptors = Contact.sort(order: $0)
 			}
 		}
+	}
+}
+
+// MARK: Contact List
+fileprivate extension ContactListView {
+	func deleteButton(for contact: Contact) -> some View {
+		Button(role: .destructive) {
+			provider.delete(contact, in: provider.newContext)
+		} label: {
+			Label("Delete", systemImage: "trash")
+		}.tint(.red)
+	}
+
+	func editButton(for contact: Contact) -> some View {
+		Button {
+			contactToEdit = contact
+		} label: {
+			Label("Edit", systemImage: "pencil")
+		}.tint(.orange)
+	}
+
+	func listRowWithSwipeActions(for contact: Contact) -> some View {
+		ContactRowView(provider: .shared, contact: contact, error: $error)
+			.swipeActions(allowsFullSwipe: true) {
+				deleteButton(for: contact)
+				editButton(for: contact)
+			}
+	}
+
+	var contactList: some View {
+		List {
+			ForEach(contacts) { contact in
+				ZStack(alignment: .leading) {
+					NavigationLink(
+						destination: ContactDetailView(contact: contact),
+						label: EmptyView.init
+					).opacity(0)
+					listRowWithSwipeActions(for: contact)
+				}
+			}
+		}
+	}
+}
+
+// MARK: Toolbar Items
+fileprivate extension ContactListView {
+	var addContactButton: some ToolbarContent {
+		ToolbarItem(placement: .navigationBarTrailing) {
+			Button {
+				contactToEdit = .empty(context: provider.newContext)
+			} label: {
+				Image(systemName: "plus")
+					.font(.title2)
+			}
+		}
+	}
+
+	var filterMenuFilterSection: some View {
+		Section("Filter") {
+			Picker(selection: $searchConfig.filter) {
+				Text("All").tag(SearchConfig.Filter.all)
+				Label("Favorites", systemImage: "star.fill")
+					.tag(SearchConfig.Filter.favs)
+			} label: {
+				Text("Filter Favorites")
+			}
+		}
+	}
+
+	var filterMenuSortSection: some View {
+		Section("Sort") {
+			Picker(selection: $sort) {
+				Label("Ascending", systemImage: "arrow.up")
+					.tag(Sort.ascending)
+				Label("Descending", systemImage: "arrow.down")
+					.tag(Sort.descending)
+			} label: {
+				Text("Sort Order")
+			}
+		}
+	}
+
+	var filterMenu: some ToolbarContent {
+		ToolbarItem(placement: .navigationBarLeading) {
+			Menu {
+				filterMenuFilterSection
+				filterMenuSortSection
+			} label: {
+				Image(systemName: "line.3.horizontal.decrease.circle")
+					.symbolVariant(.circle)
+					.font(.title2)
+			}
+		}
+	}
+
+	func sheetContent(for contact: Contact) -> some View {
+		NavigationStack {
+			CreateContactView(
+				vm: .init(provider: provider, contact: contact),
+				error: $error
+			)
+		}.interactiveDismissDisabled()
 	}
 }
 

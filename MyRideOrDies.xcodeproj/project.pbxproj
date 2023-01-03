@@ -12,6 +12,7 @@
 		D33176DB2963C3D800599987 /* NoContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33176DA2963C3D800599987 /* NoContactsView.swift */; };
 		D3DDD9172964C16700325399 /* Search+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9162964C16700325399 /* Search+Sort.swift */; };
 		D3DDD9262964D15200325399 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9252964D15200325399 /* ModelTests.swift */; };
+		D3DDD9282964E41300325399 /* View+errorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDD9272964E41300325399 /* View+errorAlert.swift */; };
 		D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */; };
 		D3F9FE3B29638F07001EC724 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContactListView.swift */; };
 		D3F9FE3D29638F08001EC724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3C29638F08001EC724 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		D3DDD9162964C16700325399 /* Search+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Sort.swift"; sourceTree = "<group>"; };
 		D3DDD91C2964D0E200325399 /* MyRideOrDiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRideOrDiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3DDD9252964D15200325399 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		D3DDD9272964E41300325399 /* View+errorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+errorAlert.swift"; sourceTree = "<group>"; };
 		D3F9FE3529638F07001EC724 /* MyRideOrDies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRideOrDies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRideOrDiesApp.swift; sourceTree = "<group>"; };
 		D3F9FE3A29638F07001EC724 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				D33176D62963BB9D00599987 /* EnvironmentValues+isPreview.swift */,
 				D33176D82963BCC400599987 /* Thread+isRunningXCTest.swift */,
+				D3DDD9272964E41300325399 /* View+errorAlert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				D33176D92963BCC400599987 /* Thread+isRunningXCTest.swift in Sources */,
 				D33176D72963BB9D00599987 /* EnvironmentValues+isPreview.swift in Sources */,
 				D3F9FE5B2963993F001EC724 /* ContactDetailView.swift in Sources */,
+				D3DDD9282964E41300325399 /* View+errorAlert.swift in Sources */,
 				D3F9FE642963A9E6001EC724 /* EditContactViewModel.swift in Sources */,
 				D33176DB2963C3D800599987 /* NoContactsView.swift in Sources */,
 				D3F9FE4829638F61001EC724 /* ContactsDataModel.xcdatamodeld in Sources */,

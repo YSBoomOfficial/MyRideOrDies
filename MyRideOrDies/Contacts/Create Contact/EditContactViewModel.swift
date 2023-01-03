@@ -16,6 +16,7 @@ final class EditContactViewModel: ObservableObject {
 	init(provider: ContactsProvider, contact: Contact? = nil) {
 		self.provider = provider
 		self.context = provider.newContext
+
 		if let contact, let existingContact = provider.exists(contact, in: context) {
 			self.contact = existingContact
 			self.isNew = false

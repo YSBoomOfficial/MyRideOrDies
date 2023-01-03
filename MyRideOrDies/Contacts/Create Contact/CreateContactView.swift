@@ -15,44 +15,77 @@ struct CreateContactView: View {
 	var body: some View {
 		List {
 			Section("General") {
-				TextField("Name", text: $vm.contact.name)
-					.keyboardType(.namePhonePad)
-
-				TextField("Email", text: $vm.contact.email)
-					.keyboardType(.emailAddress)
-
-				TextField("Phone Number", text: $vm.contact.phoneNumber)
-					.keyboardType(.phonePad)
-
-				DatePicker(
-					"Birthday",
-					selection: $vm.contact.dob,
-					displayedComponents: [.date]
-				)
-				.datePickerStyle(.compact)
+				nameTextField
+				emailTextField
+				phoneNumberTextField
+				birthdayPicker
 			}
 
 			Section("Notes") {
-				TextField("", text: $vm.contact.notes, axis: .vertical )
+				notesTextField
 			}
 		}
-		.navigationTitle(vm.isNew ? "New Contact" : "Update Contact")
+		.navigationTitle(navTitle)
 		.toolbar {
-			ToolbarItem(placement: .confirmationAction) {
-				Button("Done") {
-					do {
-						try vm.save()
-						dismiss()
-					} catch {
-						self.error = error
-					}
-				}
-				.disabled(!vm.contact.isValid)
-			}
+			doneButton
+			cancelButton
+		}
+	}
+}
 
-			ToolbarItem(placement: .navigationBarLeading) {
-				Button("Cancel", action: dismiss.callAsFunction)
-			}
+// MARK: General and Notes Section
+fileprivate extension CreateContactView {
+	var navTitle: String {
+		vm.isNew ? "New Contact" : "Update Contact"
+	}
+
+	var nameTextField: some View {
+		TextField("Name", text: $vm.contact.name)
+			.keyboardType(.namePhonePad)
+	}
+
+	var emailTextField: some View {
+		TextField("Email", text: $vm.contact.email)
+			.keyboardType(.emailAddress)
+	}
+
+	var phoneNumberTextField: some View {
+		TextField("Phone Number", text: $vm.contact.phoneNumber)
+			.keyboardType(.phonePad)
+	}
+
+	var birthdayPicker: some View {
+		DatePicker(
+			"Birthday",
+			selection: $vm.contact.dob,
+			displayedComponents: [.date]
+		)
+		.datePickerStyle(.compact)
+	}
+
+	var notesTextField: some View {
+		TextField("", text: $vm.contact.notes, axis: .vertical )
+	}
+}
+
+// MARK: Toolbar Items
+fileprivate extension CreateContactView {
+	var doneButton: some ToolbarContent {
+		ToolbarItem(placement: .confirmationAction) {
+			Button("Done") {
+				do {
+					try vm.save()
+					dismiss()
+				} catch {
+					self.error = error
+				}
+			}.disabled(!vm.contact.isValid)
+		}
+	}
+
+	var cancelButton: some ToolbarContent {
+		ToolbarItem(placement: .navigationBarLeading) {
+			Button("Cancel", action: dismiss.callAsFunction)
 		}
 	}
 }
