@@ -11,7 +11,7 @@ import SwiftUI
 struct MyRideOrDiesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ContactListView()
 				.environment(\.managedObjectContext, ContactsProvider.shared.viewContext)
         }
     }

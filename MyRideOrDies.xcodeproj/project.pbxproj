@@ -8,23 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */; };
-		D3F9FE3B29638F07001EC724 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContentView.swift */; };
+		D3F9FE3B29638F07001EC724 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE3A29638F07001EC724 /* ContactListView.swift */; };
 		D3F9FE3D29638F08001EC724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3C29638F08001EC724 /* Assets.xcassets */; };
 		D3F9FE4029638F08001EC724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F9FE3F29638F08001EC724 /* Preview Assets.xcassets */; };
 		D3F9FE4829638F61001EC724 /* ContactsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE4629638F61001EC724 /* ContactsDataModel.xcdatamodeld */; };
 		D3F9FE4C2963918C001EC724 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE4B2963918C001EC724 /* Contact.swift */; };
 		D3F9FE5629639343001EC724 /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE5529639343001EC724 /* ContactsProvider.swift */; };
+		D3F9FE58296398A6001EC724 /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE57296398A6001EC724 /* ContactRowView.swift */; };
+		D3F9FE5B2963993F001EC724 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE5A2963993F001EC724 /* ContactDetailView.swift */; };
+		D3F9FE5D29639CCC001EC724 /* CreateContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F9FE5C29639CCC001EC724 /* CreateContactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D3F9FE3529638F07001EC724 /* MyRideOrDies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRideOrDies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRideOrDiesApp.swift; sourceTree = "<group>"; };
-		D3F9FE3A29638F07001EC724 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D3F9FE3A29638F07001EC724 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		D3F9FE3C29638F08001EC724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3F9FE3F29638F08001EC724 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3F9FE4729638F61001EC724 /* ContactsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D3F9FE4B2963918C001EC724 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		D3F9FE5529639343001EC724 /* ContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsProvider.swift; sourceTree = "<group>"; };
+		D3F9FE57296398A6001EC724 /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
+		D3F9FE5A2963993F001EC724 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		D3F9FE5C29639CCC001EC724 /* CreateContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				D3F9FE3829638F07001EC724 /* MyRideOrDiesApp.swift */,
-				D3F9FE3A29638F07001EC724 /* ContentView.swift */,
 				D3F9FE4A29639170001EC724 /* CoreData Stack */,
+				D3F9FE622963A197001EC724 /* Contacts */,
 				D3F9FE3C29638F08001EC724 /* Assets.xcassets */,
 				D3F9FE3E29638F08001EC724 /* Preview Content */,
 			);
@@ -82,6 +88,41 @@
 				D3F9FE5529639343001EC724 /* ContactsProvider.swift */,
 			);
 			path = "CoreData Stack";
+			sourceTree = "<group>";
+		};
+		D3F9FE59296398FD001EC724 /* Contact List */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE3A29638F07001EC724 /* ContactListView.swift */,
+				D3F9FE57296398A6001EC724 /* ContactRowView.swift */,
+			);
+			path = "Contact List";
+			sourceTree = "<group>";
+		};
+		D3F9FE602963A162001EC724 /* Create Contact */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE5C29639CCC001EC724 /* CreateContactView.swift */,
+			);
+			path = "Create Contact";
+			sourceTree = "<group>";
+		};
+		D3F9FE612963A185001EC724 /* Contact Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE5A2963993F001EC724 /* ContactDetailView.swift */,
+			);
+			path = "Contact Detail";
+			sourceTree = "<group>";
+		};
+		D3F9FE622963A197001EC724 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				D3F9FE59296398FD001EC724 /* Contact List */,
+				D3F9FE612963A185001EC724 /* Contact Detail */,
+				D3F9FE602963A162001EC724 /* Create Contact */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +197,11 @@
 			files = (
 				D3F9FE4C2963918C001EC724 /* Contact.swift in Sources */,
 				D3F9FE5629639343001EC724 /* ContactsProvider.swift in Sources */,
+				D3F9FE5B2963993F001EC724 /* ContactDetailView.swift in Sources */,
 				D3F9FE4829638F61001EC724 /* ContactsDataModel.xcdatamodeld in Sources */,
-				D3F9FE3B29638F07001EC724 /* ContentView.swift in Sources */,
+				D3F9FE3B29638F07001EC724 /* ContactListView.swift in Sources */,
+				D3F9FE5D29639CCC001EC724 /* CreateContactView.swift in Sources */,
+				D3F9FE58296398A6001EC724 /* ContactRowView.swift in Sources */,
 				D3F9FE3929638F07001EC724 /* MyRideOrDiesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
